@@ -1,4 +1,4 @@
-function Rob-Git-Create-Azure-PullRequest {
+function RobGitCreateAzurePullRequest {
   param(
          [Parameter(Mandatory)]
          [string]$commitMessage
@@ -20,5 +20,5 @@ function Rob-Git-Create-Azure-PullRequest {
     az repos pr create --org https://dev.azure.com/MartinServera/ --project $project --repository $repository --auto-complete $autoComplete --delete-source-branch $deleteSourceBranch --squash $squash --source-branch $currentBranch --target-branch $targetBranch --title $title --merge-commit-message $commitMessage --draft false --output table
  }
 
-Export-ModuleMember -Function Rob-Git-Create-Azure-PullRequest
+Export-ModuleMember -Function RobGitCreateAzurePullRequest
 
