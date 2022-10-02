@@ -66,10 +66,10 @@ Copyright = '(c) Robert Björklund. All rights reserved.'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('RobGitUtils.psm1', 'RobGitCreateAzurePullRequest.psm1', 'RobGitCreateAzurePullRequest.psm1')
+NestedModules = 'RobGitUtils.psm1', 'RobGitAzureUtils.psm1', 'RobGitCreateAzurePullRequest.psm1', 'RobGitAzureFastPr.psm1'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-# FunctionsToExport = @()
+FunctionsToExport = 'RobGitCreateAzurePullRequest', 'RobGitAzureFastPr'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = @()

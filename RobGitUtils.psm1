@@ -1,5 +1,3 @@
-
-
 function RobGitGetCurrentBranchName {
     $currentBranch = git rev-parse --abbrev-ref HEAD
     return $currentBranch
@@ -13,11 +11,18 @@ function RobGitGetHeadBranchName {
 }
 
 function RobGitCheckCurrentBranchIsMainBranch {
-    $currentBranch = RobGitGetCurrentBranchName()
-    $headBranch = RobGitGetHeadBranchName()
+    $currentBranch = RobGitGetCurrentBranchName
+    $headBranch = RobGitGetHeadBranchName
     return $currentBranch -like $headBranch
+}
+
+
+function RobGitGetRepositoryRoot {
+     $gitRoot = git rev-parse --show-toplevel
+     return $gitRoot
 }
 
 Export-ModuleMember -Function RobGitGetCurrentBranchName
 Export-ModuleMember -Function RobGitGetHeadBranchName
 Export-ModuleMember -Function RobGitCheckCurrentBranchIsMainBranch
+Export-ModuleMember -Function RobGitGetRepositoryRoot
