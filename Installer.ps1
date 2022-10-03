@@ -16,7 +16,7 @@ $pathNumber = Read-Host
 
 $installPath = Join-Path $installPaths[$pathNumber] $moduleName $version 
 Write-Host "Installing to path: $installPath"
-Copy-Item -Path "." -Destination $installPath
+Copy-Item -Path "$PSScriptRoot\*" -Destination $installPath
 Write-Host "Done!"
 
 Write-Host "Adding module import to powershell profile $profile"
