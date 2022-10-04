@@ -5,19 +5,27 @@ $manifest = Import-PowerShellDataFile .\RobGit.psd1
 
 $installPaths = $env:PSModulePath -split ';'
 Write-Host "Where do you want to install $moduleName" "?"
-$choseNumer = 0;
+$pathNumberAlternativ = 0;
 foreach ($path in $installPaths)
 {
-  Write-Host "$choseNumer - $path"
-  $choseNumer++
+  Write-Host "$pathNumberAlternativ - $path"
+  $pathNumberAlternativ++
 }
 Write-Host "Deside by providing the number for the path"
-$pathNumber = Read-Host
+$pathNumberChoosen = Read-Host
 
-$installPath = Join-Path $installPaths[$pathNumber] $moduleName $version 
+$installPath = Join-Path $installPaths[$pathNumberChoosen] $moduleName $version 
 Write-Host "Installing to path: $installPath"
 Copy-Item -Path "$PSScriptRoot\*" -Destination $installPath
 Write-Host "Done!"
 
-Write-Host "Adding module import to powershell profile $profile"
-Add-Content -Path $profile -Value "Import-Module -Name $moduleName -DisableNameChecking" -Force
+$profileImportCommand = "Import-Module -Name $moduleName -DisableNameChecking"
+$importAlreadyPresentInProfile = Select-String -Path $profile -Pattern $profileImportCommand  
+if(!$importAlreadyPresentInProfile){
+  Write-Host "Adding module import to powershell profile $profile"
+  Add-Content -Path $profile -Value $profileImportCommand -Force
+}
+else{
+  Write-Host "Import already present in PS profile"
+}
+
