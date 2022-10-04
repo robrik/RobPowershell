@@ -17,7 +17,8 @@ List of currently available commands.
 For these commands to work you need to
 
 1. Be login to azure with: az login
-2. Have a "RobGitAzureConfig.json" present in the root of your git repo.
+2. Have a "RobGitAzureConfig.json" present in the root of your git repo. <br />
+   This can be created with "RobGitAzureCreateConfig" but you will have to fill it with your Azure Devops details.
 
 ```json
 {
